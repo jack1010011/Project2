@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topicos.NetCore.ConsoleApp", "Topicos.NetCore.ConsoleApp.csproj", "{674655CA-2CEE-47FA-BA07-E0DC167AE632}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topicos.NetCore.Mensajeria.BL", "..\Topicos.NetCore.Mensajeria.BL\Topicos.NetCore.Mensajeria.BL.csproj", "{526EE284-E7E4-4940-8340-C66FDFFE5A87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{674655CA-2CEE-47FA-BA07-E0DC167AE632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674655CA-2CEE-47FA-BA07-E0DC167AE632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674655CA-2CEE-47FA-BA07-E0DC167AE632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674655CA-2CEE-47FA-BA07-E0DC167AE632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526EE284-E7E4-4940-8340-C66FDFFE5A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526EE284-E7E4-4940-8340-C66FDFFE5A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526EE284-E7E4-4940-8340-C66FDFFE5A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526EE284-E7E4-4940-8340-C66FDFFE5A87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC82F6AF-7B7F-4A30-94B7-AF6789013868}
+	EndGlobalSection
+EndGlobal
