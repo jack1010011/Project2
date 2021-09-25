@@ -8,3 +8,6 @@
 /Topicos.NetCore.Mensajeria.BL/obj
 /Topicos.NetCore.ConsoleApp/.vs/Topicos.NetCore.ConsoleApp/v16
 /.vs
+/Topicos.NetCore.ConsoleApp/.vs/Topicos.NetCore.ConsoleApp/DesignTimeBuild
+/Topicos.NetCore.ConsoleApp/Topicos.Netcore.NorthWnd.Model/bin/Debug/net5.0
+/Topicos.NetCore.ConsoleApp/Topicos.Netcore.NorthWnd.Model/obj
