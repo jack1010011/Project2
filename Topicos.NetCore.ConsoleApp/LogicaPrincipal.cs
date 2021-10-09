@@ -17,7 +17,7 @@ namespace Topicos.NetCore.ConsoleApp
         public void HagaLaMagia()
         {
             ConsultaPorNombreAproximado();
-            //ConsultaPorPaisAproximado();
+            ConsultaPorPaisAproximado();
         }
 
         private void ConsultaPorNombreAproximado()
