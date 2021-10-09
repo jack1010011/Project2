@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.NetCore.ConsoleApp"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.NetCore.Mensajeria.BL", "..\Topicos.NetCore.Mensajeria.BL\Topicos.NetCore.Mensajeria.BL.csproj", "{526EE284-E7E4-4940-8340-C66FDFFE5A87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topicos.Netcore.NorthWnd.Model", "Topicos.Netcore.NorthWnd.Model\Topicos.Netcore.NorthWnd.Model.csproj", "{D5936ADC-C216-4A5C-B565-C957A18259DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.Netcore.NorthWnd.Model", "Topicos.Netcore.NorthWnd.Model\Topicos.Netcore.NorthWnd.Model.csproj", "{D5936ADC-C216-4A5C-B565-C957A18259DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topicos.Netcore.NorthWnd.BL", "Topicos.NetCore.NorthWnd.BL\Topicos.Netcore.NorthWnd.BL.csproj", "{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D5936ADC-C216-4A5C-B565-C957A18259DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5936ADC-C216-4A5C-B565-C957A18259DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5936ADC-C216-4A5C-B565-C957A18259DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

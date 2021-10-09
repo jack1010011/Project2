@@ -6,7 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Topicos.NetCore.NorthWnd.BL\**" />
+    <Compile Remove="Topicos.Netcore.NorthWnd.Model\**" />
+    <EmbeddedResource Remove="Topicos.NetCore.NorthWnd.BL\**" />
+    <EmbeddedResource Remove="Topicos.Netcore.NorthWnd.Model\**" />
+    <None Remove="Topicos.NetCore.NorthWnd.BL\**" />
+    <None Remove="Topicos.Netcore.NorthWnd.Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Topicos.NetCore.Mensajeria.BL\Topicos.NetCore.Mensajeria.BL.csproj" />
+    <ProjectReference Include="Topicos.NetCore.NorthWnd.BL\Topicos.Netcore.NorthWnd.BL.csproj" />
   </ItemGroup>
 
 </Project>
