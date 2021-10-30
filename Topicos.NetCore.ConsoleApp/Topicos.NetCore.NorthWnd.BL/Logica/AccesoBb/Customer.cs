@@ -19,12 +19,12 @@ namespace Topicos.Netcore.NorthWnd.BL.Logica.AccesoBd
             return resultado;
         }
 
-        public IList<Model.MyModels.Customer> BuscarPorNombreAproximadoDelPais (string nombreAproximadoDelPais)
+        public IList<Model.MyModels.Customer> BuscarPorNombreAproximadoDelStateProvince (string nombreAproximadoDelPais)
         {
             IList<Model.MyModels.Customer> resultado;
             using (var _elContexto = new Model.MyModels.AdventureWorksLT2019Context())
             {
-                var laConsulta = _elContexto.Customers.Include(c => c.CustomerAddresses).ThenInclude(ca => ca.Address).Where(c => c.CustomerAddresses.Any(ca => ca.Address.CountryRegion.Contains(nombreAproximadoDelPais))).OrderByDescending(c => c.Phone);
+                var laConsulta = _elContexto.Customers.Include(c => c.CustomerAddresses).ThenInclude(ca => ca.Address).Where(c => c.CustomerAddresses.Any(ca => ca.Address.StateProvince.Contains(nombreAproximadoDelPais))).OrderByDescending(c => c.Phone);
                 resultado = laConsulta.ToList();
             }
             return resultado;

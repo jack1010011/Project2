@@ -30,9 +30,9 @@ namespace Topicos.NetCore.ConsoleApp
 
         private void ConsultaPorPaisAproximado()
         {
-            var elPaisAproximado = "ana";
+            var elPaisAproximado = "que";
             var elServicio = new Topicos.Netcore.NorthWnd.BL.Logica.AccesoBd.Customer();
-            var elResultado = elServicio.BuscarPorNombreAproximadoDelPais(elPaisAproximado);
+            var elResultado = elServicio.BuscarPorNombreAproximadoDelStateProvince(elPaisAproximado);
             ImprimirCustomers(elResultado);
         }
 

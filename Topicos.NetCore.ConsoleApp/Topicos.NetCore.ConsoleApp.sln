@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.NetCore.ConsoleApp", "Topicos.NetCore.ConsoleApp.csproj", "{674655CA-2CEE-47FA-BA07-E0DC167AE632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.NetCore.ConsoleApp", "Topicos.NetCore.ConsoleApp\Topicos.NetCore.ConsoleApp.csproj", "{674655CA-2CEE-47FA-BA07-E0DC167AE632}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.NetCore.Mensajeria.BL", "..\Topicos.NetCore.Mensajeria.BL\Topicos.NetCore.Mensajeria.BL.csproj", "{526EE284-E7E4-4940-8340-C66FDFFE5A87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.NetCore.Mensajeria.BL", "Topicos.NetCore.Mensajeria.BL\Topicos.NetCore.Mensajeria.BL.csproj", "{526EE284-E7E4-4940-8340-C66FDFFE5A87}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.Netcore.NorthWnd.Model", "Topicos.Netcore.NorthWnd.Model\Topicos.Netcore.NorthWnd.Model.csproj", "{D5936ADC-C216-4A5C-B565-C957A18259DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topicos.Netcore.NorthWnd.BL", "Topicos.NetCore.NorthWnd.BL\Topicos.Netcore.NorthWnd.BL.csproj", "{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Topicos.Netcore.NorthWnd.BL", "Topicos.NetCore.NorthWnd.BL\Topicos.Netcore.NorthWnd.BL.csproj", "{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topicos.Netcore.Api.AdventureWorks", "Topicos.Netcore.Api.AdventureWorks\Topicos.Netcore.Api.AdventureWorks.csproj", "{F53AD335-8FE1-4670-8648-062690C88AFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47834F7C-B6D2-4E9B-92B1-D19F56F1FDEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53AD335-8FE1-4670-8648-062690C88AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53AD335-8FE1-4670-8648-062690C88AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53AD335-8FE1-4670-8648-062690C88AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53AD335-8FE1-4670-8648-062690C88AFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

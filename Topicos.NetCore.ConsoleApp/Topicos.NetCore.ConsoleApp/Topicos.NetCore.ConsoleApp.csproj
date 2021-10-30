@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Topicos.NetCore.Mensajeria.BL\Topicos.NetCore.Mensajeria.BL.csproj" />
-    <ProjectReference Include="Topicos.NetCore.NorthWnd.BL\Topicos.Netcore.NorthWnd.BL.csproj" />
+    <ProjectReference Include="..\Topicos.NetCore.NorthWnd.BL\Topicos.Netcore.NorthWnd.BL.csproj" />
   </ItemGroup>
 
 </Project>
