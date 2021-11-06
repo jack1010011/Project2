@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +15,11 @@ namespace Topicos.Netcore.Api.AdventureWorks.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly AdventureWorksLT2019Context _context;
+        private readonly IMapper _mapper;
 
-        public CustomersController()
+        public CustomersController(IMapper mapper)
         {
+            _mapper = mapper;
             _context = new AdventureWorksLT2019Context();
         }
 
@@ -34,7 +37,7 @@ namespace Topicos.Netcore.Api.AdventureWorks.Controllers
 
         // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int id)
+        public async Task<ActionResult<MyDtoModels.Customer>> GetCustomer(int id)
         {
             var customerBD = (await _context.Customers.Include(c => c.CustomerAddresses).ThenInclude(a => a.Address).Where(c => c.CustomerId == id).ToListAsync()).FirstOrDefault();
             //var customer = await _context.Customers.FindAsync (id);
@@ -43,14 +46,14 @@ namespace Topicos.Netcore.Api.AdventureWorks.Controllers
             {
                 return NotFound();
             }
-            var customerResultante = AplanarCustomer(customerBD);
+            var customerResultante = _mapper.Map<MyDtoModels.Customer>(customerBD);
 
             return customerResultante;
         }
 
         // GET: api/Customers/PagedQuery/5?HelloWorld=1234
         [HttpGet("PagedQuery/{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int id, int HelloWorld)
+        public async Task<ActionResult<MyDtoModels.Customer>> GetCustomer(int id, int HelloWorld)
         {
             var customerBD = (await _context.Customers.Include(c => c.CustomerAddresses).ThenInclude(a => a.Address).Where(c => c.CustomerId == id).ToListAsync()).FirstOrDefault();
             //var customer = await _context.Customers.FindAsync (id);
@@ -59,42 +62,42 @@ namespace Topicos.Netcore.Api.AdventureWorks.Controllers
             {
                 return NotFound();
             }
-            var customerResultante = AplanarCustomer(customerBD);
+            var customerResultante = _mapper.Map<Customer, MyDtoModels.Customer>(customerBD);
 
             return customerResultante;
         }
 
 
-        private Customer AplanarCustomer(Customer customerBD)
-        {
-            var elCustomerResultante = new Customer();
-            elCustomerResultante.CustomerId = customerBD.CustomerId;
-            elCustomerResultante.NameStyle = customerBD.NameStyle;
-            elCustomerResultante.Title = customerBD.Title;
-            elCustomerResultante.FirstName = customerBD.FirstName;
-            elCustomerResultante.MiddleName = customerBD.MiddleName;
-            elCustomerResultante.Suffix = customerBD.Suffix;
-            elCustomerResultante.CompanyName = customerBD.CompanyName;
-            elCustomerResultante.SalesPerson = customerBD.SalesPerson;
-            elCustomerResultante.EmailAddress = customerBD.EmailAddress;
-            elCustomerResultante.Phone = customerBD.Phone;
-            elCustomerResultante.LastName = customerBD.LastName;
-            elCustomerResultante.CustomerAddresses = new List<CustomerAddress>();
-            foreach (var item in customerBD.CustomerAddresses)
-            {
-                var elCustomerAddress = new CustomerAddress();
-                elCustomerAddress.AddressType = item.AddressType;
-                elCustomerAddress.Address = new Address();
-                elCustomerAddress.Address.AddressLine1 = item.Address.AddressLine1;
-                elCustomerAddress.Address.AddressLine2 = item.Address.AddressLine2;
-                elCustomerAddress.Address.City = item.Address.City;
-                elCustomerAddress.Address.StateProvince = item.Address.StateProvince;
-                elCustomerAddress.Address.CountryRegion = item.Address.CountryRegion;
-                elCustomerAddress.Address.PostalCode = item.Address.PostalCode;
-                elCustomerResultante.CustomerAddresses.Add(elCustomerAddress);
-            }
-            return elCustomerResultante;
-        }
+        //private Customer AplanarCustomer(Customer customerBD)
+        //{
+        //    var elCustomerResultante = new Customer();
+        //    elCustomerResultante.CustomerId = customerBD.CustomerId;
+        //    elCustomerResultante.NameStyle = customerBD.NameStyle;
+        //    elCustomerResultante.Title = customerBD.Title;
+        //    elCustomerResultante.FirstName = customerBD.FirstName;
+        //    elCustomerResultante.MiddleName = customerBD.MiddleName;
+        //    elCustomerResultante.Suffix = customerBD.Suffix;
+        //    elCustomerResultante.CompanyName = customerBD.CompanyName;
+        //    elCustomerResultante.SalesPerson = customerBD.SalesPerson;
+        //    elCustomerResultante.EmailAddress = customerBD.EmailAddress;
+        //    elCustomerResultante.Phone = customerBD.Phone;
+        //    elCustomerResultante.LastName = customerBD.LastName;
+        //    elCustomerResultante.CustomerAddresses = new List<CustomerAddress>();
+        //    foreach (var item in customerBD.CustomerAddresses)
+        //    {
+        //        var elCustomerAddress = new CustomerAddress();
+        //        elCustomerAddress.AddressType = item.AddressType;
+        //        elCustomerAddress.Address = new Address();
+        //        elCustomerAddress.Address.AddressLine1 = item.Address.AddressLine1;
+        //        elCustomerAddress.Address.AddressLine2 = item.Address.AddressLine2;
+        //        elCustomerAddress.Address.City = item.Address.City;
+        //        elCustomerAddress.Address.StateProvince = item.Address.StateProvince;
+        //        elCustomerAddress.Address.CountryRegion = item.Address.CountryRegion;
+        //        elCustomerAddress.Address.PostalCode = item.Address.PostalCode;
+        //        elCustomerResultante.CustomerAddresses.Add(elCustomerAddress);
+        //    }
+        //    return elCustomerResultante;
+        //}
 
         // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
