@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Topicos.Netcore.Api.AdventureWorks.Profiles
 {
-    public class AddressProfile : Profile
+    public class DtoCustomerProfile : Profile
     {
-        public AddressProfile()
+        public DtoCustomerProfile()
         {
-            CreateMap<Topicos.Netcore.NorthWnd.Model.MyModels.Address, Api.AdventureWorks.MyDtoModels.Address>();
+            CreateMap<Topicos.Netcore.NorthWnd.Model.MyModels.Customer, Api.AdventureWorks.MyDtoModels.DtoCustomer>();
         }
     }
 }

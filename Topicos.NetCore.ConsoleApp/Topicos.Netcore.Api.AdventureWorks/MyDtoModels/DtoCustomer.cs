@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Topicos.Netcore.Api.AdventureWorks.MyDtoModels
 {
-    public partial class Customer
+    public partial class DtoCustomer
     {
         public int CustomerId { get; set; }
         public bool NameStyle { get; set; }
@@ -14,8 +14,7 @@ namespace Topicos.Netcore.Api.AdventureWorks.MyDtoModels
         public string SalesPerson { get; set; }
         public string EmailAddress { get; set; }
         public string Phone { get; set; }
-        public string CustomerAddressesAddressType { get; set; }
-        public IList<Address> CustomerAddressesAddress { get; set; }
+        public IList<DtoCustomerAddress> CustomerAddresses { get; set; }
 
     }
 }

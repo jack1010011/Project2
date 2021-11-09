@@ -30,14 +30,17 @@ namespace Topicos.Netcore.Api.AdventureWorks.Controllers
 
         // GET: api/Customers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
+        public async Task<ActionResult<IEnumerable<MyDtoModels.DtoCustomer>>> GetCustomers(int pageSize = 10, int pageNumber = 1)
         {
-            return await _context.Customers.ToListAsync();
+            var customerBD = (await _context.Customers.Include(c => c.CustomerAddresses).ThenInclude(a => a.Address).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToListAsync());
+            var customerResultante = _mapper.Map<List<MyDtoModels.DtoCustomer>>(customerBD);
+
+            return customerResultante;
         }
 
         // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<MyDtoModels.Customer>> GetCustomer(int id)
+        public async Task<ActionResult<MyDtoModels.DtoCustomer>> GetCustomer(int id)
         {
             var customerBD = (await _context.Customers.Include(c => c.CustomerAddresses).ThenInclude(a => a.Address).Where(c => c.CustomerId == id).ToListAsync()).FirstOrDefault();
             //var customer = await _context.Customers.FindAsync (id);
@@ -46,14 +49,14 @@ namespace Topicos.Netcore.Api.AdventureWorks.Controllers
             {
                 return NotFound();
             }
-            var customerResultante = _mapper.Map<MyDtoModels.Customer>(customerBD);
+            var customerResultante = _mapper.Map<MyDtoModels.DtoCustomer>(customerBD);
 
             return customerResultante;
         }
 
         // GET: api/Customers/PagedQuery/5?HelloWorld=1234
         [HttpGet("PagedQuery/{id}")]
-        public async Task<ActionResult<MyDtoModels.Customer>> GetCustomer(int id, int HelloWorld)
+        public async Task<ActionResult<MyDtoModels.DtoCustomer>> GetCustomer(int id, int HelloWorld)
         {
             var customerBD = (await _context.Customers.Include(c => c.CustomerAddresses).ThenInclude(a => a.Address).Where(c => c.CustomerId == id).ToListAsync()).FirstOrDefault();
             //var customer = await _context.Customers.FindAsync (id);
@@ -62,42 +65,10 @@ namespace Topicos.Netcore.Api.AdventureWorks.Controllers
             {
                 return NotFound();
             }
-            var customerResultante = _mapper.Map<Customer, MyDtoModels.Customer>(customerBD);
+            var customerResultante = _mapper.Map<Customer, MyDtoModels.DtoCustomer>(customerBD);
 
             return customerResultante;
         }
-
-
-        //private Customer AplanarCustomer(Customer customerBD)
-        //{
-        //    var elCustomerResultante = new Customer();
-        //    elCustomerResultante.CustomerId = customerBD.CustomerId;
-        //    elCustomerResultante.NameStyle = customerBD.NameStyle;
-        //    elCustomerResultante.Title = customerBD.Title;
-        //    elCustomerResultante.FirstName = customerBD.FirstName;
-        //    elCustomerResultante.MiddleName = customerBD.MiddleName;
-        //    elCustomerResultante.Suffix = customerBD.Suffix;
-        //    elCustomerResultante.CompanyName = customerBD.CompanyName;
-        //    elCustomerResultante.SalesPerson = customerBD.SalesPerson;
-        //    elCustomerResultante.EmailAddress = customerBD.EmailAddress;
-        //    elCustomerResultante.Phone = customerBD.Phone;
-        //    elCustomerResultante.LastName = customerBD.LastName;
-        //    elCustomerResultante.CustomerAddresses = new List<CustomerAddress>();
-        //    foreach (var item in customerBD.CustomerAddresses)
-        //    {
-        //        var elCustomerAddress = new CustomerAddress();
-        //        elCustomerAddress.AddressType = item.AddressType;
-        //        elCustomerAddress.Address = new Address();
-        //        elCustomerAddress.Address.AddressLine1 = item.Address.AddressLine1;
-        //        elCustomerAddress.Address.AddressLine2 = item.Address.AddressLine2;
-        //        elCustomerAddress.Address.City = item.Address.City;
-        //        elCustomerAddress.Address.StateProvince = item.Address.StateProvince;
-        //        elCustomerAddress.Address.CountryRegion = item.Address.CountryRegion;
-        //        elCustomerAddress.Address.PostalCode = item.Address.PostalCode;
-        //        elCustomerResultante.CustomerAddresses.Add(elCustomerAddress);
-        //    }
-        //    return elCustomerResultante;
-        //}
 
         // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

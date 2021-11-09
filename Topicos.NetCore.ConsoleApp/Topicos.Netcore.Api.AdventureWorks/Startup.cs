@@ -32,7 +32,11 @@ namespace Topicos.Netcore.Api.AdventureWorks
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Topicos.Netcore.Api.AdventureWorks", Version = "v1" });
             });
             services.AddAutoMapper(typeof(Startup));
-            
+            services.AddSwaggerGen(options =>
+            {
+                options.CustomSchemaIds(type => type.ToString());
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
