@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Topicos.Netcore.NorthWnd.Model.MyValidations;
 
 namespace Topicos.Netcore.NorthWnd.Model.MyModels
 {
@@ -57,7 +58,9 @@ namespace Topicos.Netcore.NorthWnd.Model.MyModels
         [MaxLength(256)]
         public string SalesPerson { get; set; }
         [MaxLength(50)]
+        [EmailAddress]
         public string EmailAddress { get; set; }
+        [PrimeNumber(false)]
         public string Phone { get; set; }
         [Required]
         [MaxLength(128)]
