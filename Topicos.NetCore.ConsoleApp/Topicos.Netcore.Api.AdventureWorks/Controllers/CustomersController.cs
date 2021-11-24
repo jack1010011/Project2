@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Topicos.Netcore.NorthWnd.Model.MyModels;
 
@@ -53,6 +54,59 @@ namespace Topicos.Netcore.Api.AdventureWorks.Controllers
 
             return customerResultante;
         }
+
+
+
+        #region TareaII_Pagination_API
+        // Pagination 
+        public class PaginationFilter
+        {
+            public int PageNumber { get; set; }
+            public int PageSize { get; set; }
+            public PaginationFilter()
+            {
+                this.PageNumber = 0;
+                this.PageSize = 0;
+            }
+            public PaginationFilter(int pageNumber, int pageSize)
+            {
+                this.PageNumber = pageNumber < 1 ? 1 : pageNumber;
+                this.PageSize = pageSize > 10 ? 10 : pageSize;
+            }
+        }
+
+        // GET: api/Customer/PagedQuery2/1?PageNumber=1&PageSize=3
+        [HttpGet("PagedQuery2/{id}")]
+        public async Task<IActionResult> GetAll([FromQuery] PaginationFilter filter)
+        {
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+            var response = await _context.Customers.Skip((validFilter.PageNumber - 1) * validFilter.PageSize).Take(validFilter.PageSize).ToListAsync();
+            return Ok(response);
+        }
+        #endregion
+
+
+        #region PaginationSQL
+        // GET: api/Customer/PagedQuerySQL/1?PageNumber=1&PageSize=3
+        [HttpGet("PagedQuerySQL/{id}")]
+        public async Task<IActionResult> GetAll2([FromQuery] PaginationFilter filter)
+        {
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+
+            var pageNumber = new SqlParameter("@pageNumber", validFilter.PageNumber);
+            var pageSize = new SqlParameter("@pageSize", validFilter.PageSize);
+
+            var users = _context.Customers
+                        .FromSqlRaw("exec [dbo].[sp_GetUsers] @pageSize, @pageNumber", pageSize, pageNumber)
+                        .ToList();
+
+            return Ok(users);
+        }
+        #endregion
+
+
+
+
 
         // GET: api/Customers/PagedQuery/5?HelloWorld=1234
         [HttpGet("PagedQuery/{id}")]
